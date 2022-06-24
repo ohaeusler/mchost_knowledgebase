@@ -1,4 +1,4 @@
-##  Minecraft Paper Server (1.18.1) unter Ubuntu installieren
+##  Minecraft Paper Server (1.19) unter Ubuntu installieren
 > In einem Kasten stehende Command können auf einmal kopiert und in die SSH-Shell eingefügt werden
 ```bash
 apt update && apt upgrade -y && apt install openjdk-18-jre tmux wget tar zip sudo cron
@@ -7,8 +7,8 @@ su minecraft
 ```
 ```bash
 cd ~
-wget https://papermc.io/api/v2/projects/paper/versions/1.18.2/builds/267/downloads/paper-1.18.2-267.jar
-java -Xms128M -Xmx6000M -jar paper-1.18.2-267.jar
+wget https://papermc.io/ci/job/Paper-1.19/lastStableBuild/artifact/paperclip.jar
+java -Xms128M -Xmx<MaximalerRAMinMB>M -jar paperclip.jar
 nano eula.txt
 ```
 Hier `eula=false` zu`eula=true` ändern.
@@ -20,11 +20,22 @@ Folgendes einfügen:
 ```bash
 #/bin/bash
 cd /home/minecraft
-java -Xms128M -Xmx6000M -nogui -jar paper-1.18.2-267.jar 
+while true
+do
+  java -Xms128M -Xmx<MaximalerRAMinMB>M -nogui -jar paperclip.jar 
+  echo 'Willst Du den Server komplett stoppen, drücke STRG+C!'
+  echo "Neustart in:"
+  for i in 5 4 3 2 1
+  do
+  echo "$i..."
+  sleep 1
+  done
+  echo 'Server neustart!'
+done
 ```
 > Bestätigen mit der Tastenkombination **STRG** + **x**, gefolgt von **y**
 ```bash
-chmod 774 start.sh
+chmod +x start.sh
 tmux -u
 ```
 ```bash
@@ -43,7 +54,7 @@ Weitere Commands:
 
 Automatischen Start einrichten mit:
 ```bash
-nano tmux.sh && chmod 774 tmux.sh
+nano tmux.sh && chmod +x tmux.sh
 ```
 Folgendes einfügen:
 ```bash
@@ -61,3 +72,5 @@ Folgendes einfügen:
 ```bash
 @reboot /home/minecraft/tmux.sh
 ```
+
+Du hast die Installation nun abgeschlossen.
