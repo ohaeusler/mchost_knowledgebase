@@ -1,4 +1,4 @@
-##  [DEUTSCH/GERMAN] Minecraft Paper Server (1.18.1) unter Ubuntu installieren
+##  Minecraft Paper Server (1.18.1) unter Ubuntu installieren
 > In einem Kasten stehende Command können auf einmal kopiert und in die SSH-Shell eingefügt werden
 ```bash
 apt update && apt upgrade -y && apt install openjdk-18-jre tmux wget tar zip sudo cron
