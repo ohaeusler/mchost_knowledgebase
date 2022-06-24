@@ -1,5 +1,7 @@
 ##  Minecraft Paper Server (1.19) unter Ubuntu installieren
-> In einem Kasten stehende Command können auf einmal kopiert und in die SSH-Shell eingefügt werden
+> In einem Kasten stehende Command können auf einmal kopiert und in die SSH-Shell eingefügt werden.
+
+`<MaximalerRAMinMB>` muss (inkl. < und >) durch die Menge an RAM in Megabyte, die der Minecraft-Server verweden soll, ersetzt werden.
 ```bash
 apt update && apt upgrade -y && apt install openjdk-18-jre tmux wget tar zip sudo cron
 adduser minecraft
